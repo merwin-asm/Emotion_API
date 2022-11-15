@@ -1,28 +1,47 @@
-# creating a Flask app
-app = Flask(__name__)
+# # creating a Flask app
+# app = Flask(__name__)
   
-# on the terminal type: curl http://127.0.0.1:5000/
-# returns hello world when we use GET.
-# returns the data that we send when we use POST.
-@app.route('/', methods = ['GET', 'POST'])
-def home():
-    if(request.method == 'GET'):
+# # on the terminal type: curl http://127.0.0.1:5000/
+# # returns hello world when we use GET.
+# # returns the data that we send when we use POST.
+# @app.route('/', methods = ['GET', 'POST'])
+# def home():
+#     if(request.method == 'GET'):
   
-        data = "hello world"
-        return jsonify({'data': data})
-  
-  
-# A simple function to calculate the square of a number
-# the number to be squared is sent in the URL when we use GET
-# on the terminal type: curl http://127.0.0.1:5000 / home / 10
-# this returns 100 (square of 10)
-@app.route('/home/<int:num>', methods = ['GET'])
-def disp(num):
-  
-    return jsonify({'data': num**2})
+#         data = "hello world"
+#         return jsonify({'data': data})
   
   
-# driver function
-if __name__ == '__main__':
+# # A simple function to calculate the square of a number
+# # the number to be squared is sent in the URL when we use GET
+# # on the terminal type: curl http://127.0.0.1:5000 / home / 10
+# # this returns 100 (square of 10)
+# @app.route('/home/<int:num>', methods = ['GET'])
+# def disp(num):
   
-    app.run(debug = True)
+#     return jsonify({'data': num**2})
+  
+  
+# # driver function
+# if __name__ == '__main__':
+  
+#     app.run(debug = True)
+# import the required modules
+import cv2
+import matplotlib.pyplot as plt
+from deepface import DeepFace
+
+# read image
+img = cv2.imread('img.jpg')
+
+# call imshow() using plt object
+plt.imshow(img[:,:,::-1])
+
+# display that image
+plt.show()
+
+# storing the result
+result = DeepFace.analyze(img,actions=['emotion'])
+
+# print result
+print(result)
